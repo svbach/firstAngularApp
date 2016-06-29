@@ -2,4 +2,9 @@
 <div [style.color]='bachsColor'>
     Hello {{name}}
 </div>
+<input (keyup.enter)='handleKeyUp($event)' type='text' [value]='name' >
+<input type='text' [(ngModel)]='name' >
+
 <button (click)='handleButtonClick()'>Change Suit Color</button>
+<br/>
+<app-customers></app-customers>
