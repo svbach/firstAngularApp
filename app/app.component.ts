@@ -1,13 +1,17 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { HTTP_PROVIDERS } from '@angular/http';
-import {CustomersComponent} from './customer/customers.component';
+// import { CustomersComponent } from './customer/customers.component';
+// import { CustomerService } from './customer/customer.service';
+
+
+import { CustomersComponent, CustomerService } from './customer/index';
 
 @Component({
     moduleId: module.id,
     selector: 'my-app',
     templateUrl: 'app.component.html',
     directives: [CustomersComponent],
-    providers: [ HTTP_PROVIDERS ]
+    providers: [ CustomerService, HTTP_PROVIDERS ]
 })
 export class AppComponent {
     // [ ] means property binding - Component to Dom

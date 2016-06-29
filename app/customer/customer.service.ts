@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
 
 import { Observable } from 'rxjs/Rx';
 
@@ -22,7 +21,16 @@ export class CustomerService implements OnInit {
     constructor(private _http: Http) { }
 
     getCustomers() {
-        // return this.customers;
+        return this._http.get(URL_CUSTOMER)
+            .map((response: Response) => response.json())
+            .toPromise()
+            .catch((err: any) => {
+                console.log(err);
+                return Promise.reject(err);
+            });
+    }
+
+    getCustomers_RxObserable() {
         return this._http.get(URL_CUSTOMER)
             .map((response: Response) => response.json())
             .catch(this._handleError);
